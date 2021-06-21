@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Adding Property</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+</head>
+
+<body style="background-color:lavender; padding-right: 390px; padding-left: 390px;">
+    {% include "library/navbaradmin.html" %}
+    <div style="padding:30px;"></div>
+    <div class="top-content">
+
+        <div class="inner-bg" style="background-color:white;">
+            <div class="container">
+                <div class="row" style="margin-top: 30px;">
+                    <div class="col-sm-8 col-sm-offset-2 text">
+                        <!-- <h1><strong>Add Property </strong> | Owner </h1> -->
+                        <!-- <div class="description">
+                            <p>
+                                Add your property here to put your property on display.
+                            </p>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="row" style="padding-left:200px;padding-top: 50px;">
+                    <div class="col-sm-6 col-sm-offset-3 form-box">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h3 style="padding-left:50px;">Add Property</h3>
+                                <br>
+
+                                <p>{% if error %}
+                                    {{ error }}
+                                    {% endif %}
+                                </p>
+                                <!-- <p>Enter your username and password to log on:</p> -->
+                            </div>
+                            <div class="form-top-right">
+                                <i class="fa fa-lock"></i>
+                            </div>
+                        </div>
+                        <div class="form-bottom">
+                            <form role="form" action="/addProperty" method="post" enctype="multipart/form-data">
+
+                                <table>
+                                    <form method="POST" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        {{form.as_table}}
+                                </table>
+
+                                <br>
+                               
+                                <button type="submit" class="btn" style="font-size: 16px;
+                                font-weight: bold;
+                                background: #161df0;
+                                color:white;
+                                border: none;
+                                margin-top: 20px;
+                                min-width: 140px; margin-bottom:20px;">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    <!-- <p>
+                            Already an owner? You can login <a href = "login.html"> here. </a>.
+                        </p> -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

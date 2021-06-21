@@ -1,0 +1,209 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register</title>
+
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/form-elements.css">
+    <link rel="stylesheet" href="static/css/style.css">
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form-elements.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    <!-- Favicon and touch icons -->
+    <!-- comment if working with django -->
+    <!--         <link rel="shortcut icon" href="static/images/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="static/images/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="static/images/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="static/images/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="static/images/apple-touch-icon-57-precomposed.png">
+ -->
+    <!-- uncommnet if working with django -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+        href="{% static 'images/apple-touch-icon-144-precomposed.png' %}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+        href="{% static 'images/apple-touch-icon-114-precomposed.png' %}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72"
+        href="{% static 'images/apple-touch-icon-72-precomposed.png' %}">
+    <link rel="apple-touch-icon-precomposed" href="{% static 'images/apple-touch-icon-57-precomposed.png' %}">
+
+
+    {% comment %} <style>
+        .bground {
+            /* background: "static/images/buildingBackground.jpg"; */
+            background-size: auto;
+            /background-repeat: no-repeat;/
+        }
+    </style> {% endcomment %}
+
+</head>
+
+<!-- <body background="static/images/buildingBackground.jpg" > -->
+
+<body style="background-color: lavender;">
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Magic Search</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li>
+                            <a href="logout" class="nav-item nav-link">LOGOUT</a>
+                        </li>
+                        <!--&nbsp -->
+                        <!-- </li> -->
+
+                        {% comment %} <li class="nav-item">
+                            <a class="nav-link" href="#">Login</a>
+                        </li> {% endcomment %}
+                        {% comment %} <li class="nav-item">
+                            <a class="nav-link" href="#">Search</a>
+                        </li> {% endcomment %}
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+
+        <!-- background -->
+        <div style="background-repeat: no-repeat;background-size:cover;">
+
+            <!-- Top content -->
+            <div class="top-content">
+
+                <div class="inner-bg">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-8 col-sm-offset-2 text">
+                                <!-- <h1 style="color:white"><strong>BookProperty</strong></h1> -->
+                                <div class="description">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:30px; padding-left: 350px;">
+                            <div class="col-sm-6 col-sm-offset-3 form-box">
+                                <div class="form-top">
+                                    <div class="form-top-left">
+                                        <h3>Book Property</h3>
+                                        <p>{% if error %}
+                                            {{ error }}
+                                            {% endif %}
+                                        </p>
+                                        <!-- <p>Enter your username and password to log on:</p> -->
+                                    </div>
+                                    <div class="form-top-right">
+                                        <i class="fa fa-lock"></i>
+                                    </div>
+                                </div>
+                                <div class="form-bottom">
+                                    <form role="form" action="myBooking" method="post" class="login-form">
+                                        {% csrf_token %}
+                                        {% comment %} <div class="form-group">
+                                            <label class="sr-only" for="pid">Property</label>
+                                            <input type="text" name="pid" placeholder="Property ID.."
+                                                class="form-control">
+                                        </div> {% endcomment %}
+
+                                        <div class="form-group">
+                                            <label class="sr-only" for="username">usernames</label>
+                                            <input type="text" name="usernames" placeholder="Name.."
+                                                class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="sr-only" for="email">Email</label>
+                                            <input type="text" name="email" placeholder="Email.." class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="sr-only" for="address">Address</label>
+                                            <input type="text" name="address" placeholder="Address.."
+                                                class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="ids">ids</label>
+                                            <input type="text" name="ids" placeholder="Aadhar ID.."
+                                                class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="mobile">Mobile</label>
+                                            <input type="text" name="mobile" placeholder="Mobile" class="form-control">
+                                        </div>
+                                        <br>
+                                        {% comment %} <input type="checkbox" id="terms" name="terms" value="Terms"> {%
+                                        endcomment %}
+                                        {% comment %} <label for="vehicle1"><strong>
+                                                <font color="white"> &nbsp;I agree to the terms and conditions</font>
+                                            </strong></label><br> {% endcomment %}
+                                        <!-- <div class="form-group">
+                                        <label class="sr-only" for="username">Description</label>
+                                        <textarea name="paragraph_text"  name="descript" placeholder="Description" class = "form-control"></textarea>
+                                    </div> -->
+                                        <button type="submit" class="btn">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="description">
+                            <!-- <p>
+                            Already an owner? You can login <a href = "login.html"> here. </a>.
+                        </p> -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Javascript -->
+            <!--         <script src="static/js/jquery-1.11.1.min.js"></script>
+        <script src="static/js/bootstrap.min.js"></script>
+        <script src="static/js/jquery.backstretch.min.js"></script>
+        <script src="static/js/scripts.js"></script>
+ -->
+            <script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+            <script src="{% static 'js/bootstrap.min.js' %}"></script>
+            <script src="{% static 'js/jquery.backstretch.min.js' %}"></script>
+            <script src="{% static 'js/scripts.js' %}"></script>
+
+
+            <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+        </div>
+    </div>
+</body>
+
+</html>

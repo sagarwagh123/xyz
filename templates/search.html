@@ -1,0 +1,165 @@
+{% load static %}
+<!-- <body>
+    <h1>Search Result</h1>
+    <ul>
+        {% for property in properties %}
+        <li>
+           {{ property.location }}, {{ property.room }}, {{ property.abouts }}, {{ property.price }}
+
+        </li>
+        {% endfor %}
+    </ul>
+  </body> -->
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+  <title>Rent it Out</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="static/css/layout.css" rel="stylesheet" type="text/css" media="all">
+  <link href="static/css/font-awesome.css" rel="stylesheet" type="text/css" media="all">
+  <link href="static/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+  <link href="static/css/custom-flexslider.css" rel="stylesheet" type="text/css" media="all">
+  <style>
+    .mainav {
+      background-color: black;
+    }
+
+    .btn {
+      font-size: 16px;
+      font-weight: bold;
+      background: #a9abdb;
+      border: none;
+      margin-top: 20px;
+      min-width: 140px;
+    }
+  </style>
+  <!-- <link href="{% static 'css/layout.css' %}" rel="stylesheet" type="text/css" media="all"> -->
+  <!-- <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet" type="text/css" media="all"> -->
+  <!-- <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" media="all"> -->
+  <!-- <link href="{% static 'css/custom-flexslider.css' %}" rel="stylesheet" type="text/css" media="all"> -->
+
+</head>
+
+<body style="background-color: lavender;">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Magic Search</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto" style="background-color: rgb(84, 88, 88);">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+
+
+
+        <li class="nav-item">
+          <a class="nav-link" href="/search">Search</a>
+        </li>
+
+    </div>
+
+    </div>
+    <font color="white">
+      <span>Hello {{user.username }} </span>
+    </font>
+    {% comment %} <span style=" padding-left: 10px; padding-right: 10px;"><a
+        href="{% url 'logoutUser' %}">Logout</a></span> {% endcomment %}
+
+    </div>
+
+  </nav>
+
+  <div style="background-color: lavender;">
+
+    <div class="form-bottom">
+      <form role="form" action="/search" method="post" class="login-form"
+        style="padding-left:250px; padding-right:250px;">
+        {% csrf_token %}
+        <!-- <div class="form-group">
+                    <label class="sr-only" for="Description">description</label>
+                    <input type="text" name="description" placeholder="About your property.." class = "form-control">
+                </div> -->
+        <br>
+        <div class="form-group">
+          <label for="category">CATEGORY</label>
+          <input type="text" name="category" placeholder="Property Location" class="form-control">
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="Address">ADDRESS</label>
+          <input type="text" name="Address" placeholder="House Rent.." class="form-control">
+        </div>
+        <!-- <div class="form-group">
+                    <label class="sr-only" for="room">Rooms</label>
+                    <input type="text" name="room" placeholder="Rooms.." class = "form-control">
+                </div> -->
+        <!-- <div class="form-group">
+                    <label class="sr-only" for="username">Description</label>
+                    <textarea name="paragraph_text"  name="descript" placeholder="Description" class = "form-control"></textarea>
+                </div> -->
+        <br>
+        <button type="submit" class="btn">Search</button>
+        <br>
+        <br>
+        <hr>
+        <br>
+      </form>
+    </div>
+
+
+
+
+    <!-- <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <div class="card-body">
+                <p class="card-text"></p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        {% for result in property %}
+                        <tr>
+                            <td>{{result.location}}</td>
+                            <td>{{result.price}}</td>
+                        </tr>
+                        {% endfor %}
+                    </div>
+                  <small class="text-muted">9 mins</small>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+    {% for item in property %}
+    <div class="col-md-4" style="margin: 0 auto; float: none; margin-bottom: 10px;">
+      <div class="card mb-4 shadow-sm" style="margin-top: 50px;  width:35rem; text-align: center ">
+        <img src="{{ item.propImage.url }}" class="d-block w-100" alt="">
+        <div class="card-body">
+          <p class="card-text">NAME: {{item.name}}</p>
+          <p class="card-text">PHONE NUMBER: {{item.Phone_no}}</p>
+          <p class="card-text">ADDRESS: {{item.Address}} </p>
+          <p class="card-text">CATEGORY: {{item.category}}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            {% comment %} <div class="btn-group">
+              <a href="{% url 'bookProp' %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true"> Book</a>
+            </div> {% endcomment %}
+            {% comment %} <small class="text-muted">9 mins</small> {% endcomment %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+
+</body>
